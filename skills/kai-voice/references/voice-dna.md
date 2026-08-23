@@ -154,10 +154,10 @@ sandwich.
 One admission, plainly. Then he keeps going. He never writes "it could
 potentially be argued."
 
-## The four bans, in his own words
+## The bans, in his own words
 
-He named these himself. All three are enforced by tests in the product repo, in
-its `BRAND.md`, section 9.
+He named these himself. The first three are enforced by tests in the product
+repo, in its `BRAND.md`, section 9.
 
 Parataxis is the one he made Claude name for him: two independent statements set
 side by side with no connective, the second usually restating the first, with
@@ -191,3 +191,10 @@ never appear in his output:
 - the word "journey"
 - exclamation points as enthusiasm markers (he uses profanity for that instead,
   in private)
+
+The excluded-middle close and the aphoristic aside came later the same day, on
+the second pass over the same message. On "either moves that score or it
+doesn't" he asked for the name of a sentence that "ends with like an ultimatum".
+On "blunt is more useful than nice" he wrote "such a weird way, I hate this
+style". On "that part is yours" he wanted the request asked instead: "we could
+just ask, nicely like a normal person would."

@@ -11,9 +11,10 @@ description: |
   it sounds like AI or like slop, when he asks to humanize text, and when he asks
   for an email or a post without naming a style. Default to using this skill for
   any prose that goes out under Kai's name, even when he does not ask for it by
-  name. It enforces an information gate, four banned constructions (parataxis,
-  negative parallelism, rule of three, em dashes) and a ban on glaze, then keeps
-  the voice out of the way.
+  name. It enforces an information gate, six banned constructions (parataxis,
+  negative parallelism, rule of three, em dashes, excluded-middle closes,
+  aphoristic asides), a ban on glaze and a rule that requests are asked rather
+  than assigned, then keeps the voice out of the way.
 allowed-tools:
   - Read
   - Write
@@ -142,20 +143,47 @@ about *the work* is fine, while performing insecurity about *yourself* is not.
 Anything visible in an attachment, a screenshot or a link stays out of the
 message. Name what you are sending and stop.
 
-> Attached is a roster of ten fake athletes. The data is patchy on purpose, down
+> I attached a roster of ten fake athletes. The data is patchy on purpose, down
 > to one guy who has never worn a tracker.
 
-> Attached is a roster of ten fake athletes.
+> I attached a roster of ten fake athletes.
 
 Describing it also tends to pre-load a question you are about to ask, so this
 rule and section 1.4 usually fire together.
 
 ---
 
-## 2. The four bans
+### 1.6 Ask for things the way a person asks
 
-Non-negotiable on every surface, including private notes. Kai named these and
-they are enforced by tests in the product repo (its `BRAND.md`, section 9).
+A request has a verb, a person doing it and a question mark or a please. Every
+substitute for asking reads as a manager assigning work.
+
+Banned: handing the task over as a possession (*that part is yours*, *the rest
+is on you*, *over to you*, *which is where you come in*), and the agentless memo
+inversion (*Attached is a roster*, *Enclosed you will find*, *Please find
+attached*), which deletes the person doing the asking.
+
+> I can't tell whether the coaching is any good, so that part is yours.
+> Attached is a roster of ten fake athletes.
+
+> I can't tell whether the coaching is any good. Could you look at that for me?
+> I put together a roster of ten fake athletes and attached it.
+
+The second version is longer and is how a person talks to somebody they like.
+
+---
+
+## 2. The bans
+
+Non-negotiable on every surface, including private notes. Kai named 2.1 to 2.4
+and they are enforced by tests in the product repo (its `BRAND.md`, section 9).
+Sections 2.5 and 2.6 came out of the second eval and are held to the same bar,
+so the original count of four is history rather than a limit.
+
+All six are one disease. Each is a construction whose job is to sound like a
+person with a style instead of to say a thing, so the sentence performs
+decisiveness or bluntness or authority in place of carrying a fact. When a
+sentence feels like a line, that is the tell.
 
 ### 2.1 Parataxis, the double-tap
 
@@ -249,6 +277,51 @@ Three shapes to watch:
   no wearable*
 
 Genuine enumerations of four or more are fine and are not triads.
+
+### 2.5 The excluded-middle close
+
+Ending on `A or not-A`, which is true of everything and therefore says nothing.
+
+> anything I push either moves that score or it doesn't
+>
+> it either works or it doesn't
+>
+> either the coach trusts it or he doesn't
+
+The logic is the law of excluded middle stated as though it were a finding. The
+sound is an ultimatum, because the second half is the first half with a negation
+flipped, so the sentence lands on a beat and delivers no fact. It belongs to the
+same family as 2.2, with a foil that has been emptied out completely.
+
+**How to fix it.** Say what the fixed half buys you.
+
+> Because the inputs never move, I get a number I can compare week to week.
+
+Watch the cousins: *X, or it doesn't*, *time will tell*, *we'll see either way*,
+*it works or it doesn't*, and any tail that restates its own clause negated.
+
+### 2.6 The aphoristic aside
+
+A maxim dropped beside a request so the writer sounds like someone with a
+philosophy.
+
+> Four things, and blunt is more useful than nice:
+>
+> Three questions, and speed beats polish here:
+
+The shape is a comparative maxim, *X is more useful than Y*, doing the work of
+antithesis under 2.2 while also stage-directing the reader on what register to
+answer in. Announcing that you value bluntness is not bluntness, it is ethos by
+assertion, which is 1.3 pointed at yourself instead of at the content.
+
+**How to fix it.** Cut it, or state the standard as a standard, which he already
+does in his own writing.
+
+> Four things:
+>
+> Four things, and be brutally honest on all of them:
+
+The imperative is fine and protected under section 4. The proverb is not.
 
 ### 2.4 Em dashes
 
@@ -398,6 +471,10 @@ delivered about a message to a PhD collaborator on her own study:
 - No capability is stated in order to set up a limitation.
 - No review question names your own suspicion.
 - Nothing is defined against a foil.
+- No sentence ends on `A or not-A`.
+- No maxim, proverb or comparative aside sits next to a request.
+- Every request is an actual request, with a verb and a person doing it.
+- No attachment is announced by inversion.
 - No two adjacent short sentences tick-tock.
 - Every triad passes the drop test and has had its parallel frame broken.
 - Zero em dashes.
@@ -430,10 +507,14 @@ tag, and a parallel triad.
 
 **Rewritten:**
 > I can catch Harlen inventing a number or contradicting the data. I can't tell
-> whether the coaching is any good, so that part is yours.
+> whether the coaching is any good. Could you look at that part for me?
 >
-> Attached is a roster of ten fake athletes. I made the data patchy on purpose,
-> down to one who has never worn a tracker.
+> I put together a roster of ten fake athletes and attached it. I made the data
+> patchy on purpose, down to one who has never worn a tracker.
+
+The first version of this rewrite ended on "so that part is yours" and opened
+the second paragraph with "Attached is a roster", which is what section 1.6 was
+written to stop. It sat here as approved output until the second eval caught it.
 
 ### Product copy
 

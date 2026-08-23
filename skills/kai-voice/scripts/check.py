@@ -5,8 +5,9 @@ Usage:
     python3 check.py FILE [FILE ...]
     python3 check.py -            # read stdin
 
-Flags em dashes, negative parallelism, paratactic double-taps, rule-of-three
-fragments, curly quotes, hype vocabulary, bold-header bullets and chat residue.
+Flags em dashes, negative parallelism, excluded-middle closes, assignment
+framing, aphoristic asides, paratactic double-taps, rule-of-three fragments,
+curly quotes, hype vocabulary, bold-header bullets and chat residue.
 Fenced code blocks are skipped. Exit status is 1 when anything is found, so this
 can gate a commit.
 """
@@ -69,6 +70,47 @@ NEG_PARALLEL = [
      "negative parallelism: capability set up as a foil"),
     (r"^\s*(?:No|Not)\s+[\w\s'-]{2,30}\.\s*(?:No|Not)\s+[\w\s'-]{2,30}\.",
      "rule of three by negation"),
+]
+
+EXCLUDED_MIDDLE = [
+    (r"\beither\b[^.?!;]{0,70}?\bor\s+(?:it|they|he|she|we|you|i|that|this)\s+"
+     r"(?:doesn'?t|don'?t|didn'?t|won'?t|wouldn'?t|isn'?t|aren'?t|wasn'?t|can'?t|"
+     r"cannot|hasn'?t|haven'?t|didn'?t)\b",
+     "excluded-middle close (either A or not-A)"),
+    (r"\bor\s+(?:it|they|he|she|we|you|i|that|this)\s+"
+     r"(?:doesn'?t|don'?t|didn'?t|won'?t|wouldn'?t|isn'?t|aren'?t|wasn'?t|can'?t|"
+     r"hasn'?t|haven'?t)\s*[.!?]",
+     "excluded-middle close (tail restates its own clause negated)"),
+    (r"\bor\s+(?:it|they|he|she|we|you)\s+won'?t\b[^.?!;]{0,20}[.!?]",
+     "excluded-middle close"),
+    (r"\b(?:time will tell|we'?ll see either way|one way or the other)\b",
+     "excluded-middle close (empty binary)"),
+]
+
+ASSIGNMENT = [
+    (r"\b(?:that|this|the rest|the hard part|which)(?:'s|\s+is)?\s*(?:part\s+)?"
+     r"(?:is\s+|'s\s+)?(?:yours|on you|your (?:job|department|lane|part))\b",
+     "assignment framing (hand-off instead of an ask)"),
+    (r"\b(?:that|this|which)(?:'s|\s+is)\s+where you come in\b",
+     "assignment framing (hand-off instead of an ask)"),
+    (r"\bover to you\b(?!\s*[,:]\s*\w+\s+said)",
+     "assignment framing (hand-off instead of an ask)"),
+    (r"\bI'?(?:ll|d)\s+leave (?:that|it|the rest) (?:to|with) you\b",
+     "assignment framing (hand-off instead of an ask)"),
+    (r"^\s*(?:attached|enclosed|included)\s+(?:is|are|you'?ll find|please find)\b",
+     "memo inversion (say what you attached, with a subject)"),
+    (r"\b(?:please )?find (?:attached|enclosed)\b",
+     "memo inversion (say what you attached, with a subject)"),
+]
+
+APHORISM = [
+    (r"[,;]\s*(?:and\s+)?\w+(?:\s+\w+){0,2}\s+is\s+"
+     r"(?:more\s+\w+\s+than|better\s+than|worth\s+more\s+than)\s+\w+\s*[:.!]",
+     "aphoristic aside (maxim doing the work of a request)"),
+    (r"[,;]\s*(?:and\s+)?\w+(?:\s+\w+){0,2}\s+beats\s+\w+\s*[:.!]",
+     "aphoristic aside (maxim doing the work of a request)"),
+    (r"\b(?:no need to be|don'?t bother being|spare me the)\s+(?:nice|polite|gentle|kind)\b",
+     "aphoristic aside (stage-directing the reader)"),
 ]
 
 SPLIT = re.compile(r"(?<=[.!?])\s+")
@@ -375,7 +417,7 @@ def scan(name, raw, terms=frozenset()):
         if "“" in line or "”" in line or "’" in line:
             findings.append((n, "curly quote", line.strip()))
 
-        for pat, label in NEG_PARALLEL:
+        for pat, label in NEG_PARALLEL + EXCLUDED_MIDDLE + ASSIGNMENT + APHORISM:
             m = re.search(pat, line, re.I)
             if m:
                 findings.append((n, label.upper(), m.group(0).strip()))
@@ -427,7 +469,7 @@ def scan(name, raw, terms=frozenset()):
         if not buf:
             return
         joined = " ".join(buf)
-        for pat, label in NEG_PARALLEL:
+        for pat, label in NEG_PARALLEL + EXCLUDED_MIDDLE + ASSIGNMENT + APHORISM:
             for m in re.finditer(pat, joined, re.I):
                 frag = " ".join(m.group(0).split())
                 key = (start, label.upper(), frag)

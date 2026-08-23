@@ -166,3 +166,38 @@ Worth knowing, because these are calibration points rather than accidents.
 - "Right now when I change how Harlen works, I'm guessing whether it got
   better." survived, which is the one sentence in the message that states a
   problem without decorating it.
+
+---
+
+## Round two, same day
+
+The message went back with the eight modes above cleared, and three more spans
+came back flagged. All three had survived every earlier pass, and two of them
+came from the original draft.
+
+| Span | Verdict | Name |
+|---|---|---|
+| "anything I push either moves that score or it doesn't" | "weird sentence structure, ends with like an ultimatum" | excluded-middle close, SKILL 2.5 |
+| "so that part is yours" | "such an unnatural way of telling him I want him to do something, we could just ask, nicely like a normal person would" | assignment framing, SKILL 1.6 |
+| "Four things, and blunt is more useful than nice:" | "such a weird way, I hate this style" | aphoristic aside, SKILL 2.6 |
+
+"Four things, and blunt is more useful than nice:" is listed under *What
+survived* above, because the first eval left it alone. Going unflagged once is
+weak evidence, so read that section as spans nobody has caught yet.
+
+**Root cause.** Each of the three is a sentence written to sound like a person
+with a style. The binary close performs decisiveness, the hand-off performs
+authority, the maxim performs bluntness, and none of them carries a fact. Glaze
+is the same disease aimed at the content instead of at the writer. One question
+catches all four: is this a sentence, or is it a line?
+
+**The recurring near-miss.** Twice now the skill has cleared its own scanner and
+still produced slop, because the scanner only sees what somebody has already
+named. When a span survives, name the construction before fixing the sentence,
+then add the name to SKILL.md and the pattern to `check.py`. A fix that edits
+only the one sentence buys nothing.
+
+**Approved examples rot.** SKILL.md section 8 carried "so that part is yours" as
+a model rewrite until 1.6 was written, so the file was teaching the construction
+it now bans. After adding a rule, run `check.py` over SKILL.md and the
+references and fix every example the new rule catches.

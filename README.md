@@ -36,9 +36,12 @@ list of what a sentence may not do.
 
 The information gate comes first: a line earns its place by giving the reader
 something they need before they can act, since a true fact with no consumer is
-still filler. Four constructions are then banned outright, parataxis, negative
-parallelism, rule of three, and em dashes. Glaze goes too, meaning anything that
-announces importance instead of carrying it.
+still filler. Requests have to be asked rather than assigned. Six constructions
+are then banned outright: parataxis, negative parallelism, rule of three, em
+dashes, the excluded-middle close (*it either works or it doesn't*, which is
+true of everything and so says nothing) and the aphoristic aside (*blunt is more
+useful than nice*, a maxim standing in for a request). Glaze goes too, meaning
+anything that announces importance instead of carrying it.
 
 `scripts/check.py` is the deterministic half, scanning for each of them, plus
 a 137-term hard ban list and a 44-term soft list read straight out of
@@ -56,6 +59,13 @@ seven of those had arrived in the material handed over for editing. They lived
 because an earlier pass treated them as the author's own words, when a previous
 model had written them. So the headline is that a pasted draft proves nothing
 about voice, and inherited text gets the same bar as new text.
+
+A second pass over the same message killed three more spans, and the entry for
+it is the more useful half. Each one had cleared the scanner, because a scanner
+only catches what somebody has already named, and one of them had been sitting
+in SKILL.md as an approved example. So the routine is to name the construction
+before fixing the sentence, then run the scanner back over the skill's own
+examples.
 
 The corpus behind it is one person's and the register table is his. Fork it and
 swap `references/voice-dna.md` for your own measurements.
